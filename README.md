@@ -1,4 +1,3 @@
 # game-collection
-# Collection of small game projects that I'm using to learn various techniques
-# Will probably update all of them as i go
-# I like programming
+A collection of small projects that I'm using to learn various techniques. 
+I'll probably update all of them with new features as I learn new skills.
