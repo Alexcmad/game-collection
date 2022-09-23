@@ -17,21 +17,27 @@ def choose_mark(event):
 
     Allows the player to choose either X or O
     The bot will choose the other mark
-    In the future, X will always start first
+    X will Go first
     """
     global mark, bot
-    mark = event.widget["text"]
-    if mark == 'O':
-        bot = 'X'
-    else:
-        bot = 'O'
+    print(event.widget["state"])
+    if event.widget["state"] == tk.NORMAL:
+        for x in buttons:
+            x["state"]=tk.NORMAL
+            x["relief"]=tk.RAISED
+            x["borderwidth"] = 3
 
-    for x in buttons:
-        x["state"]=tk.ACTIVE
-        x["relief"]=tk.RAISED
-        x["borderwidth"] = 3
+        btn_X["state"]=tk.DISABLED
+        btn_O["state"]=tk.DISABLED
 
-    event.widget["state"]=tk.DISABLED
+        mark = event.widget["text"]
+        if mark == 'O':
+            bot = 'X'
+            bot_move()
+        else:
+            bot = 'O'
+
+
 
 
 def player_move(event):
@@ -113,7 +119,7 @@ def game_end(x):
 
 
 def  initialize():
-    global window, buttons, available_moves, player_moves, bot_moves
+    global window, buttons, available_moves, player_moves, bot_moves, btn_X, btn_O
 
     buttons = []  # List containing all the buttons on the grid for easy reference
     available_moves = []  # List containing all the moves that are available to the player or bot
